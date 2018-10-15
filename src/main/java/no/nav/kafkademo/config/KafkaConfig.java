@@ -3,12 +3,15 @@ package no.nav.kafkademo.config;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.kafka.core.DefaultKafkaProducerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.core.*;
 
 @Configuration
 public class KafkaProducerConfig {
+
+    @Bean
+    public ConsumerFactory<String, String> consumerFactory(KafkaProperties properties) {
+        return new DefaultKafkaConsumerFactory<>(properties.buildConsumerProperties());
+    }
 
     @Bean
     public ProducerFactory<String, String> producerFactory(KafkaProperties properties) {
