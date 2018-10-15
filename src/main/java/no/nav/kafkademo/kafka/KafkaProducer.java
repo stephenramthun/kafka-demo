@@ -12,7 +12,7 @@ public class KafkaProducer {
 
     private final KafkaTemplate<String, String> template;
 
-    @Value("${app.topic.foo}")
+    @Value("${app.topic.test}")
     private String topic;
 
     @Autowired
