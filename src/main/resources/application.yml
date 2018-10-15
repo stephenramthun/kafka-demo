@@ -2,6 +2,8 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     properties:
+      client:
+        id: kafka-demo
       security.protocol: SASL_PLAINTEXT
       sasl:
         mechanism: PLAIN
@@ -13,7 +15,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       group-id: srvp01
-      auto-offset-reset: latest
+      auto-offset-reset: earliest
 
 app:
   topic:
