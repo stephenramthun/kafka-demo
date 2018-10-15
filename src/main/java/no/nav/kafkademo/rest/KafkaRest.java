@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KafkaRest {
 
+    private final KafkaProducer producer;
+
     @Autowired
-    private KafkaProducer producer;
+    public KafkaRest(KafkaProducer producer) {
+        this.producer = producer;
+    }
 
     @GetMapping("/send/{message}")
     public String sendMessage(@PathVariable String message) {
